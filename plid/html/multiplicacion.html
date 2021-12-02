@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multiplicación - simath</title>
+    <link rel="stylesheet" type="text/css" href="../styles.CSS">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Roboto&family=Shippori+Antique&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="titulo">simath</h1>
+    
+    <div id="MIProblema" class="problema">
+    <script>
+        //generador numero random
+        function generateRandom(min, max) {
+        min = Math.floor(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (1 + max - min) + min);
+        }
+
+        //generador problema
+        function generateProblem() {
+            x = generateRandom(1,10);
+        y = generateRandom(1,10);
+        result = x * y;
+            console.log(x);
+        console.log(y);
+        console.log(result);
+        document.write(x + ' x ');
+        document.write(y + ' =');
+        }
+        generateProblem();
+        
+    </script>
+    </div>
+
+    <!--formulario-->
+    <form action="recibe_respuesta" method="get" id="sumaform" name="sumaform" class="form" > 
+        <input type="number" id="numeros" required pattern="[0-9]+" maxlength="2" class="respuesta" autofocus autocomplete="off">        
+        <label class="lbl-suma" for="numeros"></label>
+
+     <input class="boton" type="submit" value="enviar" id="btn" name="btn"> 
+    </form>
+
+    <div class="enlace"><a href="../index.html">salir</a></div>
+    
+<script>
+    //validacion de respuesta
+    const sumaform = document.getElementById("sumaform");
+
+    sumaform.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        console.log("respuesta enviada es " + document.sumaform.numeros.value);
+
+        if (document.sumaform.numeros.value == result){
+            Swal.fire({
+    text: 'respuesta correcta!',
+    icon: 'success',
+    timer: 3000,
+    timerProgressBar: true,
+    showConfirmButton: false
+    
+        })
+
+        var recargar = function () {
+            location.href = location.href;
+        }
+        setTimeout(recargar, 3000);
+
+        }else{
+            Swal.fire({
+    text: 'respuesta incorrecta',
+    icon: 'error',
+    timer: 3000,
+    timerProgressBar: true,
+    showConfirmButton: false 
+        })
+        }
+        
+    });
+
+</script>    
+  
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
